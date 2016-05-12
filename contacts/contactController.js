@@ -1,6 +1,12 @@
 app.controller('ContactController', function (contactsService, $state, $stateParams) {
     var cc = this;
 
+    var id = $stateParams.id;
+
+    if (id && id !== '') {
+        cc.contact = contactsService.getContact(id);
+    }
+
     cc.isValidNumber = function (num) {
         if (!num)
             return true;
@@ -12,10 +18,14 @@ app.controller('ContactController', function (contactsService, $state, $statePar
     };
 
     cc.save = function () {
-        var result = contactsService.addContact(cc.contact);
+        var result = cc.contact.id ? contactsService.editContact(cc.contact) : contactsService.addContact(cc.contact);
 
         if (result) {
             cc.contact.id = result;
+            $state.go('contacts');
+        }
+        else{
+            notie.alert(3, 'Save Failed!!. Number already exists', 2);
         }
     }
 });

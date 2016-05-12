@@ -6,8 +6,14 @@ describe('contact controller tests', function () {
     beforeEach(function () {
         mockContactsService = {
 
+            getContact :function () {
+
+            },
             addContact: function () {
 
+            },
+            editContact: function () {
+                
             }
         };
 
@@ -83,5 +89,47 @@ describe('contact controller tests', function () {
             expect(isValid).toBe(true);
 
         });
-    })
+    });
+
+    describe("when edit contact is invoked", function () {
+        var contact;
+
+        beforeEach(inject(function ($rootScope, $controller, _contactsService_, $state) {
+            mockContactsService = _contactsService_;
+            scope = $rootScope.$new();
+
+            spyOn($state, 'go').and.callFake(function (state, params) {
+                // This replaces the 'go' functionality for the duration of your test
+            });
+            contact = {firstName: 'Manoj', lastName: 'Sethi', phoneNumber: '111', id: '1234'};
+            spyOn(mockContactsService, 'getContact').and.returnValue(contact);
+            stateParams = {id: '1234'};
+
+            // use the new $scope in creating the controller
+            $controller("ContactController as cc", {
+                $scope: scope,
+                contactsService: mockContactsService,
+                $stateParams: stateParams
+            });
+            vm = scope.cc;
+        }));
+
+        it("should display the contact from service when id is not blank", function () {
+            vm.$stateParams = stateParams;
+            expect(vm).toBeDefined();
+            expect(mockContactsService.getContact).toHaveBeenCalledWith('1234');
+            expect(vm.contact.firstName).toBe('Manoj');
+            expect(vm.contact.lastName).toBe('Sethi');
+            expect(vm.contact.phoneNumber).toBe('111');
+            expect(vm.contact.id).toBe('1234');
+        });
+
+        it("should call editContact method from service with contact passed in when saved", function () {
+            spyOn(mockContactsService, 'editContact').and.returnValue('1234');
+            vm.save();
+            expect(mockContactsService.editContact).toHaveBeenCalledWith(vm.contact);
+            expect(vm.contact.id).toBe('1234');
+        });
+    });
+
 });

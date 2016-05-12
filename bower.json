@@ -22,7 +22,8 @@
     "angular-cookies": "^1.5.5",
     "angular-mocks": "^1.5.5",
     "lodash": "^4.12.0",
-    "angularLocalStorage": "ngStorage#^0.3.2"
+    "angularLocalStorage": "ngStorage#^0.3.2",
+    "notie": "^3.2.0"
   },
   "resolutions": {
     "angular": "1.5.5",

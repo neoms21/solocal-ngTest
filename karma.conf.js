@@ -15,6 +15,7 @@ module.exports = function (config) {
             'bower_components/angularLocalStorage/dist/angularLocalStorage.min.js',
             'bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'bower_components/lodash/dist/lodash.min.js',
+            'bower_components/notie/dist/notie.min.js',
             'app.js',
             'js/*.js',
             'contacts/*.js'
