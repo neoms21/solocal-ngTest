@@ -14,6 +14,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Phone Number</th>
+                    <th>Delete</th>
                 </tr>
 
                 </thead>
@@ -21,7 +22,12 @@
                 <tr ng-repeat="row in cc.contacts">
                     <td>{{row.firstName}} {{row.lastName}}</td>
                     <td><a ui-sref="contact({id: row.id})"> {{row.phoneNumber}}</a></td>
-
+                    <td>
+                        <button type="button" ng-click="cc.remove(row)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-remove-circle">
+                            </i>
+                        </button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

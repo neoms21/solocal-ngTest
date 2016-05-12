@@ -68,7 +68,6 @@ describe('contact controller tests', function () {
     });
 
 
-
     describe('when phone number is entered', function () {
 
         it('should invalidate the number if entered incorrectly', function () {
