@@ -1,0 +1,22 @@
+
+{
+  "name": "solocal",
+  "version": "0.3.1",
+  "main": "",
+  "devDependencies": {
+    "karma": "^0.13.21",
+    "karma-jasmine": "~0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0"
+  },
+  "engines": {
+    "npm": ">=1.3.7",
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "karma-chrome-launcher": "^1.0.1"
+  }
+}
