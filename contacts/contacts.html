@@ -19,7 +19,16 @@
 
                 </thead>
                 <tbody>
-                <tr ng-repeat="row in cc.contacts">
+                <tr>
+                    <td colspan="3">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Search by name"
+                                   ng-model="cc.searchText">
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat="row in cc.contacts | searchTable :{query:cc.searchText}">
                     <td>{{row.firstName}} {{row.lastName}}</td>
                     <td><a ui-sref="contact({id: row.id})"> {{row.phoneNumber}}</a></td>
                     <td>
