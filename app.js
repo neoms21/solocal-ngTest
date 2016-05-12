@@ -6,7 +6,14 @@ var app = angular.module('app',['ui.router','ngCookies','angularLocalStorage'])
                 templateUrl: 'contacts/contact.html',
                 controller: 'ContactController',
                 controllerAs:'cc'
-            });
+            })
+            .state('contacts', {
+            url: '/contacts',
+            templateUrl: 'contacts/contacts.html',
+            controller: 'ContactsController',
+            controllerAs:'cc'
 
-        $urlRouterProvider.otherwise('/contact/');
+        });
+
+        $urlRouterProvider.otherwise('/contacts');
     });

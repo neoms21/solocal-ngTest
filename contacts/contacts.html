@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-offset-11 col-md-1 text-right">
+            <button class="btn btn-sm btn-success" ng-click="cc.navigate()">Add Contact</button>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in cc.contacts">
+                    <td>{{row.firstName}} {{row.lastName}}</td>
+                    <td><a ui-sref="contact({id: row.id})"> {{row.phoneNumber}}</a></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
