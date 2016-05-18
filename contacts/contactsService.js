@@ -13,7 +13,8 @@ app.service('contactsService', function (storage, $q) {
     }
     this.addContact = function (contact) {
         var contacts = storage.get('contacts', {defaultValue: []});
-
+		if(!contacts)
+			contacts = [];
         var existingContact = _.find(contacts, function (c) {
             return c.phoneNumber === contact.phoneNumber;
         });
